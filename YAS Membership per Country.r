@@ -28,9 +28,9 @@ data <- as.data.frame(read_sheet("https://docs.google.com/spreadsheets/d/134kCLF
 #Data Exploration
 str(data)
 
-data<-data[,1:2] 
+data<-data[,1:3] 
 data<-data[-c(55),]
-names(data)<-c("name_long", "YAS Q1")
+names(data)<-c("iso_a2", "country", "YAS Q1")
 
 head(data)
 summary(data)
@@ -39,9 +39,11 @@ summary(data)
 #Plotting the data
 #plot(data$number_q1)
 
+africa1<-world %>% filter(continent=="Africa")
+
 africa = world %>% 
   filter(continent == "Africa", !is.na(name_long)) %>%
-   left_join(data, by = "name_long")
+   left_join(data, by = "iso_a2")
  
 
 
