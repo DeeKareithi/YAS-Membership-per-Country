@@ -22,7 +22,7 @@ library(spData)
 
 #loading data
 
-data <- as.data.frame(read_sheet("https://docs.google.com/spreadsheets/d/134kCLF-VPMInkGKw22ZC9Ox7IQcgHkP1AoEO18_aqFk/edit#gid=0"))
+data <- as.data.frame(read.csv("C:\\Users\\Dorcas\\Documents\\GitHub\\YAS\\YAS-Membership-per-Country\\Africa Membership Summary - Sheet1.CSV"))
 
 
 #Data Exploration
@@ -30,7 +30,7 @@ str(data)
 
 data<-data[,1:3] 
 data<-data[-c(55),]
-names(data)<-c("iso_a2", "country", "YAS Q1")
+names(data)<-c("iso_a2", "country", "YASA Membership")
 
 head(data)
 summary(data)
@@ -47,7 +47,7 @@ africa = world %>%
  
 
 
-tm_shape(africa) + tm_polygons("YAS Q1", palette = "Blues") + tm_text("name_long", size = 0.53)
+tm_shape(africa) + tm_polygons("YASA Membership", palette = "Greens") + tm_text("country", size = "AREA", just="centre")
 
 #gplot(africa) +
    #geom_sf(aes(geometry = geom, fill = number_q1)) 
